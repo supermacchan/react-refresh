@@ -1,10 +1,8 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
 import css from "./Modal.module.css"
 
-export const Modal = ({ onClose }) => {
-    // const dispatch = useDispatch();
+export const Modal = ({ onClose, data }) => {
     useEffect(() => {
         const handleKeydown = event => {
             if (event.code === 'Escape') {
@@ -39,7 +37,7 @@ export const Modal = ({ onClose }) => {
         <div onClick={handleOverlayClick} className={css.backdrop}>
             {/* modal */}
             <div className={css.modal}>
-                shalala
+                <p className={css.text}>{data}</p>
             </div>
         </div>,
         modalRoot,

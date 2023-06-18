@@ -16,8 +16,13 @@
 
     box-sizing: border-box;
     width: 700px;
-    min-height: 400px;
+    min-height: 100px;
     padding: 40px 20px;
 
     background-color: #fff;
+}
+
+.text {
+    text-align: center;
+    font-size: 20px;
 }

@@ -1,9 +1,23 @@
 import css from "./Header.module.css";
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
+import { operations } from 'redux/operations';
 import { Modal } from "components/Modal/Modal";
 
 export const Header = () => {
     const [showModal, setShowModal] = useState(false);
+    const [fact, setFact] = useState('');
+    const dispatch = useDispatch();
+
+    const handleButtonClick = async () => {
+        try {
+            const data = await dispatch(operations.getRandomFact());
+            setFact(data.payload);
+            toggleModal();
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const toggleModal = () => {
         setShowModal(prevState => !prevState);
@@ -15,7 +29,7 @@ export const Header = () => {
             <h1>Cats catalog</h1>
             <button 
                 type="button" 
-                onClick={toggleModal}
+                onClick={handleButtonClick}
                 className={css.button}
             >
                 Fun Fact
@@ -25,6 +39,7 @@ export const Header = () => {
         {showModal &&
             <Modal
                 onClose={toggleModal}
+                data={fact}
             />
         }
         </>

@@ -5,6 +5,7 @@ const initialState = {
   cats: [],
   isLoading: false,
   error: null,
+  fact: null
 };
 
 export const rootSlice = createSlice({
@@ -22,7 +23,18 @@ export const rootSlice = createSlice({
     [operations.getAllCats.rejected](state, action) {
         state.error = action.payload;
         state.isLoading = false;
-    }
+    },
+
+    [operations.getRandomFact.fulfilled](state, action) {
+        state.fact = action.payload;
+    },
+    [operations.getRandomFact.pending](state, action) {
+        state.isLoading = true;
+    },
+    [operations.getRandomFact.rejected](state, action) {
+        state.error = action.payload;
+        state.isLoading = false;
+    },
   }
 });
 

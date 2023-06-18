@@ -12,7 +12,6 @@ export const CardList = () => {
         const fetchCats = async () => {
             try {
                 const data = await dispatch(operations.getAllCats());
-                console.log(data);
                 setCats(data.payload);
             } catch (error) {
                 console.error(error);

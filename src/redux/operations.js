@@ -26,6 +26,20 @@ const getAllCats = createAsyncThunk(
     }
 )
 
+// =========== fetch a fact ============
+const getRandomFact = createAsyncThunk(
+    'cats/fetchFact',
+    async (_, thunkAPI) => {
+        try {
+            const { data } = await instance.get('/fact', options);
+            return data.fact;
+        } catch (error) {
+            console.error(error);
+        }
+    }
+)
+
 export const operations = {
-    getAllCats
+    getAllCats,
+    getRandomFact
 }
