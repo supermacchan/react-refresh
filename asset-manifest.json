@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-refresh/static/css/main.b3ae7968.css",
+    "main.js": "/react-refresh/static/js/main.2393bb03.js",
+    "index.html": "/react-refresh/index.html",
+    "main.b3ae7968.css.map": "/react-refresh/static/css/main.b3ae7968.css.map",
+    "main.2393bb03.js.map": "/react-refresh/static/js/main.2393bb03.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b3ae7968.css",
+    "static/js/main.2393bb03.js"
+  ]
+}
