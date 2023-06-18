@@ -1,36 +1,26 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { operations } from "redux/operations";
 import { Card } from "components/Card/Card";
 import css from "./CardList.module.css"
 
-const instance = axios.create({
-    baseURL: process.env.REACT_APP_BASE_URL || 'https://catfact.ninja/',
-});
-
-const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': JSON.stringify(process.env.REACT_APP_API_KEY),
-    },
-    contentType: 'application/json',
-};
-
 export const CardList = () => {
     const [cats, setCats] = useState([]);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchCats();
-    }, [])
-
-    const fetchCats = async () => {
-        try {
-            const { data } = await instance.get('/breeds', options);;
-            console.log(data.data);
-            setCats(data.data);
-        } catch (error) {
-            console.error(error);
+        const fetchCats = async () => {
+            try {
+                const data = await dispatch(operations.getAllCats());
+                console.log(data);
+                setCats(data.payload);
+            } catch (error) {
+                console.error(error);
+            }
         }
-    }
+
+        fetchCats();
+    }, [dispatch])
 
     return (
         <section className={css.main}>
